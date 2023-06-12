@@ -1,0 +1,41 @@
+import javax.swing.JOptionPane;
+
+public class Main {
+    public static void main(String[] args) {
+        Main m = new Main();
+        boolean bolLogin = false;
+
+        while (!bolLogin) {
+            bolLogin = m.login();
+
+            if (bolLogin) {
+                JOptionPane.showMessageDialog(null, "Welcome");
+            } else {
+                JOptionPane.showMessageDialog(null, "Try Again");
+            }
+        }
+    }
+
+    // User Info
+    String[][] user = {
+            {"Maung", "123"},
+            {"Su Su", "123"},
+            {"Nandar", "213"}
+    };
+
+    public boolean login() {
+        String userName = JOptionPane.showInputDialog("Enter User Name");
+        String password = JOptionPane.showInputDialog("Enter Password");
+
+        for (String[] userData : user) {
+            String username = userData[0];
+            String userPassword = userData[1];
+
+            if (userName.equals(username) && password.equals(userPassword)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
