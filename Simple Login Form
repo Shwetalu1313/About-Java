@@ -1,3 +1,7 @@
+
+
+import product.entry.FoodEntry;
+
 import javax.swing.JOptionPane;
 
 public class Main {
@@ -10,6 +14,16 @@ public class Main {
 
             if (bolLogin) {
                 JOptionPane.showMessageDialog(null, "Welcome");
+                FoodEntry []Food = {
+                        new FoodEntry("Bubble Tea","Drink",4500),
+                        new FoodEntry("Apple","Fruit",500),
+                        new FoodEntry("Ice-cream","snack",1500)
+                };
+                System.out.println("No\t\t"+"Product\t\t"+"Category\t\t"+"Price");
+                for (int i = 0; i < Food.length; i++) {
+                    int Number = 1+i;
+                    System.out.println(Number+"\t"+Food[i].getProductName()+"\t|\t"+Food[i].getCategory()+"\t|\t"+Food[i].getPrice());
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Try Again");
             }
@@ -23,6 +37,8 @@ public class Main {
             {"Nandar", "213"}
     };
 
+
+
     public boolean login() {
         String userName = JOptionPane.showInputDialog("Enter User Name");
         String password = JOptionPane.showInputDialog("Enter Password");
@@ -30,6 +46,10 @@ public class Main {
         for (String[] userData : user) {
             String username = userData[0];
             String userPassword = userData[1];
+                                            /*[Maung, 123] ==> index 0,1
+                                              [Su Su, 123] ==> index 0,1
+                                              [Nandar, 213]==> index 0,1
+                                              */
 
             if (userName.equals(username) && password.equals(userPassword)) {
                 return true;
@@ -38,4 +58,5 @@ public class Main {
 
         return false;
     }
+
 }
