@@ -1,8 +1,7 @@
-
-
 import product.entry.FoodEntry;
 
 import javax.swing.JOptionPane;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,18 +12,10 @@ public class Main {
             bolLogin = m.login();
 
             if (bolLogin) {
-                JOptionPane.showMessageDialog(null, "Welcome");
-                FoodEntry []Food = {
-                        new FoodEntry("Bubble Tea","Drink",4500),
-                        new FoodEntry("Apple","Fruit",500),
-                        new FoodEntry("Ice-cream","snack",1500)
-                };
-                System.out.println("No\t\t"+"Product\t\t"+"Category\t\t"+"Price");
-                for (int i = 0; i < Food.length; i++) {
-                    int Number = 1+i;
-                    System.out.println(Number+"\t"+Food[i].getProductName()+"\t|\t"+Food[i].getCategory()+"\t|\t"+Food[i].getPrice());
-                }
-            } else {
+                //JOptionPane.showMessageDialog(null,"Good");
+                m.ChooseCategory();
+            }
+            else {
                 JOptionPane.showMessageDialog(null, "Try Again");
             }
         }
@@ -37,7 +28,99 @@ public class Main {
             {"Nandar", "213"}
     };
 
+    public void ChooseCategory(){
+        String[] categories = {"Drink","Fruit", "Snack", "All"};
 
+        int option = JOptionPane.showOptionDialog
+                (null,
+                        "Select category",
+                        "Category Selection",
+                        JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        categories,
+                        categories[0]
+                );
+
+        switch (option){
+            case 0: Drink();break;
+            case 1: Fruit();break;
+            case 2: Snack();break;
+            case 3: displayFoods();break;
+        }
+    }
+    public FoodEntry[] getFood(){
+        return new FoodEntry[]{
+                new FoodEntry("Bubble Tea","Drink",4500),
+                new FoodEntry("Tea","Drink",2300),
+                new FoodEntry("Apple","Fruit",500),
+                new FoodEntry("Pineapple","Fruit",700),
+                new FoodEntry("Ice-cream","snack",1500),
+                new FoodEntry("Potato-chip","snack",1800)
+        };
+    }
+
+    public void displayFoods() {
+        StringBuilder snackList = new StringBuilder();
+        FoodEntry[] foodEntries = getFood();
+        for (int i = 0; i < foodEntries.length; i++) {
+            int number = i + 1;
+                snackList.append(number).append("\t")
+                        .append(foodEntries[i].getProductName()).append("\t|\t")
+                        .append(foodEntries[i].getCategory()).append("\t|\t")
+                        .append(foodEntries[i].getPrice()).append("\n");
+
+        }
+        JOptionPane.showMessageDialog(null, snackList.toString(), "Available Snacks", JOptionPane.INFORMATION_MESSAGE);
+    }
+    public void Drink() {
+        StringBuilder snackList = new StringBuilder();
+        FoodEntry[] foodEntries = getFood();
+        int n = 0;
+        for (int i = 0; i < foodEntries.length; i++) {
+
+
+            if (foodEntries[i].getCategory().equals("Drink")) {
+                snackList.append(n += 1).append("\t")
+                        .append(foodEntries[i].getProductName()).append("\t|\t")
+                        .append(foodEntries[i].getCategory()).append("\t|\t")
+                        .append(foodEntries[i].getPrice()).append("\n");
+            }
+        }
+        JOptionPane.showMessageDialog(null, snackList.toString(), "Available Snacks", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void Fruit() {
+        StringBuilder snackList = new StringBuilder();
+        FoodEntry[] foodEntries = getFood();
+        int incre = 0;
+        for (int i = 0; i < foodEntries.length; i++) {
+            if (foodEntries[i].getCategory().equals("Fruit")) {
+                
+                incre += 1;
+                snackList.append(incre).append("\t|")
+                        .append(foodEntries[i].getProductName()).append("\t|\t")
+                        .append(foodEntries[i].getCategory()).append("\t|\t")
+                        .append(foodEntries[i].getPrice()).append("\n");
+            }
+        }
+        JOptionPane.showMessageDialog(null, snackList.toString(), "Available Snacks", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void Snack() {
+        StringBuilder snackList = new StringBuilder();
+        FoodEntry[] foodEntries = getFood();
+        int n = 0;
+        for (int i = 0; i < foodEntries.length; i++) {
+            if (foodEntries[i].getCategory().equals("snack")) {
+                snackList.append(n+=1).append("\t")
+                        .append(foodEntries[i].getProductName()).append("\t|\t")
+                        .append(foodEntries[i].getCategory()).append("\t|\t")
+                        .append(foodEntries[i].getPrice()).append("\n");
+            }
+        }
+        JOptionPane.showMessageDialog(null, snackList.toString(), "Available Snacks", JOptionPane.INFORMATION_MESSAGE);
+    }
 
     public boolean login() {
         String userName = JOptionPane.showInputDialog("Enter User Name");
