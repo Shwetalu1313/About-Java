@@ -36,9 +36,9 @@ public class Main {
                     Unit[0]);
             switch (Cc){
                 case 0:
-                    System.out.println(c.getArea());
+                    System.out.println(c.getArea());break;
                 case 1:
-                    System.out.println(c.getPerimeter());
+                    System.out.println(c.getPerimeter());break;
             }
         }
 
@@ -55,9 +55,9 @@ public class Main {
 
             switch (Rc){
                 case 0:
-                    System.out.println(r.getArea());
+                    System.out.println(r.getArea());break;
                 case 1:
-                    System.out.println(r.getPerimeter());
+                    System.out.println(r.getPerimeter());break;
             }
         }
     }
